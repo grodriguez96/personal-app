@@ -1,0 +1,39 @@
+.container {
+  margin: 30px 50px 20px 50px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 16%;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+.icon-up {
+  color: green;
+}
+
+.icon-down {
+  color: red;
+}
+
+.ml-4 {
+  margin-left: 5px;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
