@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CreateTransactionComponent } from 'src/app/dialogs/create-transaction/create-transaction.component';
 import { UpdateTransactionComponent } from 'src/app/dialogs/update-transaction/update-transaction.component';
+import { DeleteTransactionComponent } from 'src/app/dialogs/delete-transaction/delete-transaction.component';
 
 @Component({
   selector: 'app-budget-list',
@@ -15,7 +16,7 @@ import { UpdateTransactionComponent } from 'src/app/dialogs/update-transaction/u
 export class BudgetListComponent implements AfterViewInit {
 
   data: Transaction[] = [
-    { id: 1, concept: "Pago de netflix", date: "2001-08-23", amount: 2.5, type: Type.DEPOSIT },
+    { id: 1, concept: "Pago de netflix", date: "2001-08-23", amount: 2.5, type: Type.WITHDRAWALS },
     { id: 2, concept: "Pago de cine", date: "2002-07-05", amount: 0.5, type: Type.WITHDRAWALS },
     { id: 3, concept: "Pago de Alquiler", date: "2002-04-12", amount: 20, type: Type.WITHDRAWALS },
     { id: 4, concept: "Sueldo", date: "2003-06-20", amount: 50, type: Type.DEPOSIT },
@@ -71,6 +72,20 @@ export class BudgetListComponent implements AfterViewInit {
       if (result != undefined) {
         const index = this.dataSource.data.findIndex(obj => obj.id == result.id)
         this.dataSource.data[index] = result;
+        this.dataSource._updateChangeSubscription();
+      }
+    });
+  }
+
+  deleteTransaction(row: Transaction) {
+    const dialogRef = this.dialog.open(DeleteTransactionComponent, {
+      data: row,
+    });
+
+    dialogRef.afterClosed().subscribe((result: Transaction) => {
+      if (result != undefined) {
+        const index = this.dataSource.data.findIndex(obj => obj.id == result.id);
+        this.dataSource.data.splice(index, 1);
         this.dataSource._updateChangeSubscription();
       }
     });

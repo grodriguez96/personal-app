@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Eliminar transaccion</h2>
+<mat-dialog-content>
+
+  <h3>Esta seguro que desea eliminar esta transaccion ?</h3>
+
+  <table cellspacing="1">
+
+    <tr>
+      <td>
+        Concepto: {{transaction.concept |titlecase}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Fecha: {{transaction.date}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Monto: {{transaction.amount}}
+      </td>
+    </tr>
+    <tr>
+      <td *ngIf="transaction.type == 0">
+        Tipo: Ingreso
+      </td>
+      <td *ngIf="transaction.type == 1">
+        Tipo: Egreso
+      </td>
+    </tr>
+
+  </table>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="undefined" color='warn'>Cancelar</button>
+  <button mat-button [mat-dialog-close]="deleteTransaction()">Elimnar</button>
+</mat-dialog-actions>
