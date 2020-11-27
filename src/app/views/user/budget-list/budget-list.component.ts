@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CreateTransactionComponent } from 'src/app/dialogs/create-transaction/create-transaction.component';
+import { UpdateTransactionComponent } from 'src/app/dialogs/update-transaction/update-transaction.component';
 
 @Component({
   selector: 'app-budget-list',
@@ -58,6 +59,20 @@ export class BudgetListComponent implements AfterViewInit {
         this.dataSource._updateChangeSubscription();
       }
 
+    });
+  }
+
+  updateTransaction(row: Transaction): void {
+    const dialogRef = this.dialog.open(UpdateTransactionComponent, {
+      data: row,
+    });
+
+    dialogRef.afterClosed().subscribe((result: Transaction) => {
+      if (result != undefined) {
+        const index = this.dataSource.data.findIndex(obj => obj.id == result.id)
+        this.dataSource.data[index] = result;
+        this.dataSource._updateChangeSubscription();
+      }
     });
   }
 
