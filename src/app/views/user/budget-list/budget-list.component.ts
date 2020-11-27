@@ -4,6 +4,7 @@ import { Transaction, Type } from 'src/app/interfaces/transaction/transaction';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { CreateTransactionComponent } from 'src/app/dialogs/create-transaction/create-transaction.component';
 
 @Component({
   selector: 'app-budget-list',
@@ -45,6 +46,19 @@ export class BudgetListComponent implements AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  createTransaction(): void {
+    const dialogRef = this.dialog.open(CreateTransactionComponent);
+
+    dialogRef.afterClosed().subscribe((result: Transaction) => {
+
+      if (result != undefined) {
+        this.dataSource.data.push(result);
+        this.dataSource._updateChangeSubscription();
+      }
+
+    });
   }
 
 }

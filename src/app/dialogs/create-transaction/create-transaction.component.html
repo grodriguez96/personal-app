@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>Agregar transaccion</h2>
+<mat-dialog-content>
+
+  <!-- Form container-->
+  <form [formGroup]="form" class="form">
+    <table cellspacing="1">
+
+      <!-- Concept input-->
+      <tr>
+        <td>
+          <mat-form-field>
+            <mat-label>Concepto</mat-label>
+            <input matInput formControlName="concept" placeholder="Ej. Pago de Alquiler">
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <!-- Amount input-->
+      <tr>
+        <td>
+          <mat-form-field>
+            <mat-label>Monto</mat-label>
+            <input matInput formControlName="amount" type="number" placeholder="Ej. 5.60">
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <!-- Type input-->
+      <tr>
+        <td>
+          <mat-form-field appearance="fill" class="type">
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName='type' type="number">
+              <mat-option value=0>Ingreso</mat-option>
+              <mat-option value=1>Egreso</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <!-- Date input-->
+      <tr>
+        <td>
+          <mat-form-field appearance="fill" class="date">
+            <mat-label>Escoge una fecha</mat-label>
+            <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint>Formato : mm/dd/aaaa</mat-hint>
+          </mat-form-field>
+        </td>
+      </tr>
+
+    </table>
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="undefined" color='warn'>Cancelar</button>
+  <button mat-button [mat-dialog-close]="createTransaction()" [disabled]="!form.valid">Crear</button>
+</mat-dialog-actions>
