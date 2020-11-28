@@ -18,7 +18,7 @@ export class UpdateTransactionComponent {
   constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) private transaction: Transaction, private datePipe: DatePipe) {
     this.form = this.fb.group({
       concept: new FormControl(this.transaction.concept, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      date: new FormControl(this.transaction.date, [Validators.required]),
+      date: new FormControl(this.transaction.transactionDate, [Validators.required]),
       amount: new FormControl(this.transaction.amount, [Validators.required]),
       type: new FormControl(this.transaction.type, [Validators.required])
     })
@@ -31,12 +31,14 @@ export class UpdateTransactionComponent {
   }
 
   updateTransaction() {
-    const data = {
+    const data: Transaction = {
       id: this.transaction.id,
       concept: this.form.value['concept'],
-      date: this.datePipe.transform(this.form.value['date'], 'yyyy-MM-dd'),
+      transactionDate: this.datePipe.transform(this.form.value['date'], 'yyyy-MM-dd'),
       amount: this.form.value['amount'],
       type: this.form.value['type'],
+      creationDate: this.transaction.creationDate
+
 
     }
     return data;

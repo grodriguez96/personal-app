@@ -22,14 +22,19 @@ export class HomeComponent {
 
   currentBalance(transactions: Transaction[]): number {
     let balance = 0;
-    transactions.forEach(transaction => {
-      transaction.type === Type.DEPOSIT ? balance += transaction.amount : balance -= transaction.amount;
-    });
+    if (transactions) {
+      transactions.forEach(transaction => {
+        transaction.type === Type.DEPOSIT ? balance += transaction.amount : balance -= transaction.amount;
+      });
+    }
     return balance;
   }
 
   lastTransactions(): Transaction[] {
-    const data = this.localData.data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()).reverse().slice(0, 9);
+    let data = []
+    if (this.localData.data) {
+      data = this.localData.data.sort((a, b) => new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime()).reverse().slice(0, 9);
+    }
     return data;
   }
 }

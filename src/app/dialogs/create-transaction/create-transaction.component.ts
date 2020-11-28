@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Type } from 'src/app/enums/transaction/type.enum';
+import { Transaction } from 'src/app/interfaces/transaction/transaction';
 
 @Component({
   selector: 'app-create-transaction',
@@ -33,12 +34,15 @@ export class CreateTransactionComponent {
   }
 
   createTransaction() {
-    const data = {
+    const data: Transaction = {
+      id: Math.random(),
       concept: this.form.value['concept'],
-      date: this.datePipe.transform(this.form.value['date'], 'yyyy-MM-dd'),
+      transactionDate: this.datePipe.transform(this.form.value['date'], 'yyyy-MM-dd'),
       amount: this.form.value['amount'],
-      type: Number.parseFloat(this.form.value['type'])
+      type: Number.parseFloat(this.form.value['type']),
+      creationDate: this.datePipe.transform(new Date().toISOString(), "yyyy-MM-dd-hh-mm-ss")
     }
+    console.log(data)
     return data;
   }
 
