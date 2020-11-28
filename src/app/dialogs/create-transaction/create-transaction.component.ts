@@ -42,7 +42,6 @@ export class CreateTransactionComponent {
       type: Number.parseFloat(this.form.value['type']),
       creationDate: this.datePipe.transform(new Date().toISOString(), "yyyy-MM-dd-hh-mm-ss")
     }
-    console.log(data)
     return data;
   }
 

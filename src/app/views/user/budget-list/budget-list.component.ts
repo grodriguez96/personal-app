@@ -18,12 +18,14 @@ export class BudgetListComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['concept', 'date', 'amount', 'type', 'edit', 'delete'];
   dataSource: MatTableDataSource<Transaction>;
+  isDataEmpty = true;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private dialog: MatDialog, private localData: LocalDataService) {
     this.dataSource = new MatTableDataSource(this.localData.data);
+    this.isDataEmpty = this.isEmpty();
 
   }
 
@@ -54,7 +56,9 @@ export class BudgetListComponent implements AfterViewInit {
 
       if (result != undefined) {
         this.dataSource.data.push(result);
+        this.isDataEmpty = this.isEmpty();
         this.updateDatas();
+
       }
 
     });
@@ -83,9 +87,15 @@ export class BudgetListComponent implements AfterViewInit {
       if (result != undefined) {
         const index = this.dataSource.data.findIndex(obj => obj.id == result.id);
         this.dataSource.data.splice(index, 1);
+        this.isDataEmpty = this.isEmpty();
         this.updateDatas();
+
       }
     });
+  }
+
+  isEmpty() {
+    return (this.dataSource.data.length > 0) ? false : true;
   }
 
 }
