@@ -28,9 +28,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { CreateTransactionComponent } from '../../../dialogs/create-transaction/create-transaction.component';
 import { UpdateTransactionComponent } from '../../../dialogs/update-transaction/update-transaction.component';
 import { DeleteTransactionComponent } from '../../../dialogs/delete-transaction/delete-transaction.component';
+import { HomeComponent } from '../home/home.component';
 
 @NgModule({
-  declarations: [UserComponent, BudgetListComponent, CreateTransactionComponent, UpdateTransactionComponent, DeleteTransactionComponent],
+  declarations: [UserComponent, BudgetListComponent, CreateTransactionComponent, UpdateTransactionComponent, DeleteTransactionComponent, HomeComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

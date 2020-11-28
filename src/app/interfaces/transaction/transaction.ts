@@ -1,8 +1,4 @@
-export enum Type {
-
-    DEPOSIT = 0,
-    WITHDRAWALS = 1
-}
+import { Type } from '../../enums/transaction/type.enum'
 
 export interface Transaction {
 

@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Type } from 'src/app/interfaces/transaction/transaction';
+import { Type } from 'src/app/enums/transaction/type.enum';
 
 @Component({
   selector: 'app-create-transaction',
