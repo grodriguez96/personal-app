@@ -16,6 +16,10 @@ body {
   min-height: 100vh !important;
 }
 
+.pb-20 {
+  padding-bottom: 20px;
+}
+
 .ml-5 {
   margin-left: 5px !important;
 }
@@ -29,7 +33,11 @@ body {
 }
 
 .text-center {
-  text-align: center;
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .display-1 {
@@ -47,11 +55,8 @@ body {
   color: red;
 }
 
-table {
-  width: 100%;
-}
-
 .table-container {
   justify-self: center;
   width: 90%;
+  overflow: hidden;
 }

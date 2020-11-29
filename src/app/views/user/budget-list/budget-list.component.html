@@ -12,7 +12,7 @@
       <mat-hint>Ingrese una letra, palabra o número para buscar relaciones</mat-hint>
     </mat-form-field>
 
-    <div class="mat-elevation-z8">
+    <div class="mat-elevation-z8 e-container">
       <table mat-table [dataSource]="dataSource" matSort>
 
         <!-- Concept Column -->
@@ -46,21 +46,15 @@
           </td>
         </ng-container>
 
-        <!-- Edit Column -->
-        <ng-container matColumnDef="edit">
+        <!-- Buttons Column -->
+        <ng-container matColumnDef="buttons">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let row">
             <button mat-raised-button (click)="updateTransaction(row)">Editar</button>
+            <button mat-raised-button color="warn" class="ml-5" (click)="deleteTransaction(row)">Eliminar</button>
           </td>
         </ng-container>
 
-        <!-- Delete Column -->
-        <ng-container matColumnDef="delete">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let row">
-            <button mat-raised-button color="warn" (click)="deleteTransaction(row)">Eliminar</button>
-          </td>
-        </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

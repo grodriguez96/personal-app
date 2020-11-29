@@ -1,12 +1,15 @@
-<div class="home-container w-100 min-vh-100">
+<div class="home-container w-100 min-vh-100 pb-20">
 
   <h2 class="mt-10 text-center welcome-title">Bienvenido 'Usuari@' al sistema </h2>
 
-  <h3 class="balance text-center display-1 ">Su balance actual es de: <br> <span
-      [ngClass]="{'negative': balance <0,'positive': balance >= 0}">{{balance}} $</span>
-  </h3>
+  <div class="balance">
+    <h3 class="display-1 text-center">Su balance actual es de: <br>
+      <span [ngClass]="{'negative': balance <0,'positive': balance >= 0}">{{balance}} $</span>
+    </h3>
+  </div>
 
-  <div class="table-container ml-20">
+
+  <div class="table-container">
     <h2 class="text-center">Listado de las ultimas 10 transacciones: </h2>
     <div class="mat-elevation-z8">
 

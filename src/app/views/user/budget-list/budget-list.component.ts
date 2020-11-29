@@ -16,7 +16,7 @@ import { LocalDataService } from 'src/app/services/localData/local-data.service'
 })
 export class BudgetListComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['concept', 'date', 'amount', 'type', 'edit', 'delete'];
+  displayedColumns: string[] = ['concept', 'date', 'amount', 'type', 'buttons'];
   dataSource: MatTableDataSource<Transaction>;
   isDataEmpty = true;
 

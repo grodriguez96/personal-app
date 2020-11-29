@@ -15,9 +15,44 @@
 .balance {
   grid-row: balance;
   grid-column: balance;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-td,
-th {
-  width: 25%;
+.mat-column-type,
+.mat-column-amount,
+.mat-column-date,
+.mat-column-concept {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+
+
+@media screen and (max-width :480px) {
+  .home-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 70px repeat(2, auto);
+    grid-template-areas: "welcome""balance""table";
+  }
+
+  .display-1 {
+    font-size: xx-large !important;
+  }
+
+  .mat-column-date {
+    max-width: 70px;
+  }
+
+  .mat-column-concept {
+    max-width: 50px;
+  }
+
+  .mat-column-type {
+    max-width: 50px;
+  }
+
 }
