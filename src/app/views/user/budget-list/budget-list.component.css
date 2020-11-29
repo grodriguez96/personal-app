@@ -1,14 +1,12 @@
-.container {
-  margin: 30px 50px 20px 50px;
+.list-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px auto auto;
 }
 
 .filter {
   max-width: 25%;
   margin-bottom: 20px;
-}
-
-table {
-  width: 100%;
 }
 
 .mat-form-field {
@@ -19,24 +17,4 @@ table {
 td,
 th {
   width: 16%;
-}
-
-.buttons {
-  margin-top: 10px;
-}
-
-.icon-up {
-  color: green;
-}
-
-.icon-down {
-  color: red;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.ml-5 {
-  margin-left: 5px;
 }

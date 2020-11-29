@@ -1,4 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.min-vh-100 {
+  min-height: 100vh !important;
+}
+
+.ml-5 {
+  margin-left: 5px !important;
+}
+
+.ml-20 {
+  margin-left: 20px !important;
+}
+
+.mt-10 {
+  margin-top: 10px !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.display-1 {
+  font-size: 3.5rem !important;
+  font-weight: 300 !important;
+  line-height: 1.2 !important;
+
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+table {
+  width: 100%;
+}
+
+.table-container {
+  justify-self: center;
+  width: 90%;
+}

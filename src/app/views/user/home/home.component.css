@@ -1,31 +1,20 @@
-.container {
-  margin: 30px 50px 20px 50px;
+.home-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 100px auto;
+  grid-template-areas: 'welcome welcome'
+    'balance table';
+  overflow: hidden;
 }
 
-.title {
-  margin-top: 10px;
-  text-align: center;
+.welcome-title {
+  grid-row: welcome;
+  grid-column: welcome;
 }
 
-.text-center {
-  text-align: center;
-}
-
-.negative {
-  color: red;
-}
-
-.positive {
-  color: green;
-}
-
-table {
-  width: 100%;
-}
-
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
+.balance {
+  grid-row: balance;
+  grid-column: balance;
 }
 
 td,

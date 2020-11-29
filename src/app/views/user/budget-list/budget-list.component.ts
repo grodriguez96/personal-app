@@ -60,7 +60,6 @@ export class BudgetListComponent implements AfterViewInit {
         this.updateDatas();
 
       }
-
     });
   }
 
