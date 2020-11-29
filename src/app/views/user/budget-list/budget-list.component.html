@@ -38,10 +38,10 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header> TIPO </th>
           <td mat-cell *matCellDef="let row">
             <div *ngIf="row.type === 0">
-              Ingreso <mat-icon class="icon-up ml-5">arrow_upward</mat-icon>
+              Ingreso <mat-icon class="positive ml-5">arrow_upward</mat-icon>
             </div>
             <div *ngIf="row.type === 1">
-              Egreso <mat-icon class="icon-down ml-5">arrow_downward</mat-icon>
+              Egreso <mat-icon class="negative ml-5">arrow_downward</mat-icon>
             </div>
           </td>
         </ng-container>
@@ -50,7 +50,7 @@
         <ng-container matColumnDef="edit">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let row">
-            <button mat-raised-button class="bg-info text-white" (click)="updateTransaction(row)">Editar</button>
+            <button mat-raised-button (click)="updateTransaction(row)">Editar</button>
           </td>
         </ng-container>
 
