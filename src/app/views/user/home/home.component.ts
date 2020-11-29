@@ -35,7 +35,7 @@ export class HomeComponent {
   lastTransactions(): Transaction[] {
     let data = []
     if (this.localData.data != undefined) {
-      data = this.localData.data.sort((a, b) => new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime()).reverse().slice(0, 9);
+      data = this.localData.data.sort((a, b) => new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime()).reverse().slice(0, 10);
     }
     return data;
   }
