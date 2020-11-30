@@ -1,0 +1,36 @@
+<div class="login-container min-vh-100 w-100 pb-20">
+
+  <h2 class="text-center mt-10">Formulario de Ingreso: </h2>
+  <!-- Form container-->
+  <form [formGroup]="form" class="form text-center">
+    <table cellspacing="1">
+
+      <!-- Email input-->
+      <tr>
+        <td>
+          <mat-form-field>
+            <mat-label>Correo</mat-label>
+            <input matInput formControlName="email" type="email">
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <!-- Password input-->
+      <tr>
+        <td>
+          <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="password" type="password">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button mat-raised-button color="primary" (click)="login()">Entrar</button>
+
+        </td>
+      </tr>
+    </table>
+  </form>
+
+</div>

@@ -1,0 +1,14 @@
+.login-container {
+  background-color: #fafafa;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

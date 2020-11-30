@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./views/user/user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./views/auth/auth/auth.module').then(m => m.AuthModule)
   }];
 
 @NgModule({
