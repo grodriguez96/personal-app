@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
+
+.index-container {
+  background-color: #fafafa;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas: "cover auth";
+}
+
+.cover {
+  grid-row: cover;
+  grid-column: cover;
+}
+
+.auth {
+  grid-row: auth;
+  grid-column: auth;
+}
+
+h1 {
+  color: var(--purple);
+  font-family: 'Ranchers', cursive;
+}
+
+.img {
+  width: 25%;
+  display: block;
+  margin: auto;
+}
+
+img {
+  width: 100%;
+}
+
+.auth {
+  font-size: xx-large;
+}
+
+.caution {
+  font-size: small !important;
+  color: red;
+}
+
+@media screen and (max-width:480px) {
+
+  .index-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas: "cover""auth";
+  }
+
+  .display-1 {
+    font-size: 4rem !important;
+    font-weight: 150 !important;
+    line-height: 0.6 !important;
+  }
+
+  .subtitle {
+    font-size: larger;
+  }
+
+  .img {
+    width: 50%;
+  }
+
+  .auth {
+    font-size: large;
+    width: 95%;
+    margin: auto !important;
+  }
+}

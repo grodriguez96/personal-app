@@ -8,12 +8,40 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+:root {
+  --blue: #2780e3;
+  --indigo: #6610f2;
+  --purple: #613d7c;
+  --pink: #e83e8c;
+  --red: #ff0039;
+  --orange: #f0ad4e;
+  --yellow: #ff7518;
+  --green: #3fb618;
+  --teal: #20c997;
+  --cyan: #9954bb;
+  --white: #fff;
+  --gray: #868e96;
+  --gray-dark: #373a3c;
+  --primary: #2780e3;
+  --secondary: #373a3c;
+  --success: #3fb618;
+  --info: #9954bb;
+  --warning: #ff7518;
+  --danger: #ff0039;
+  --light: #f8f9fa;
+  --dark: #373a3c;
+}
+
 .w-100 {
   width: 100% !important;
 }
 
 .min-vh-100 {
   min-height: 100vh !important;
+}
+
+.pt-50 {
+  padding-top: 100px !important;
 }
 
 .pb-20 {
@@ -36,6 +64,11 @@ body {
   margin-top: 10px !important;
 }
 
+.mt-30 {
+  margin-top: 30px !important;
+}
+
+
 .text-center {
   text-align: center !important;
 }
@@ -45,11 +78,18 @@ body {
 }
 
 .display-1 {
+  font-size: 7rem !important;
+  font-weight: 300 !important;
+  line-height: 1.2 !important;
+}
+
+.display-2 {
   font-size: 3.5rem !important;
   font-weight: 300 !important;
   line-height: 1.2 !important;
-
 }
+
+
 
 .positive {
   color: green;

@@ -4,12 +4,12 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-login-user',
+  templateUrl: './login-user.component.html',
+  styleUrls: ['./login-user.component.css'],
   providers: [AuthService]
 })
-export class LoginComponent {
+export class LoginUserComponent {
 
   form: FormGroup;
 
@@ -26,10 +26,8 @@ export class LoginComponent {
     if (result.user.emailVerified) {
       this.route.navigate(['user'])
     } else {
-      this.route.navigate(['auth/verification'])
+      this.route.navigate(['verification'])
     }
   }
-
-
 
 }

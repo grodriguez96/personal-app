@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  selector: 'app-register-user',
+  templateUrl: './register-user.component.html',
+  styleUrls: ['./register-user.component.css'],
   providers: [AuthService]
 })
-export class RegisterComponent {
+export class RegisterUserComponent {
 
   form: FormGroup;
 
@@ -23,11 +23,10 @@ export class RegisterComponent {
   async register() {
     const { email, password } = this.form.value;
     const result = await this.authSvc.register(email, password);
-    console.log(result.user.email)
     if (result) {
       await this.authSvc.sendEmail();
-      console.log((await this.authSvc.afAuth.currentUser).emailVerified)
-      this.route.navigate(['auth/verification'])
+      this.route.navigate(['verification'])
     }
   }
+
 }
