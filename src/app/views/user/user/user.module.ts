@@ -13,6 +13,11 @@ import { UpdateTransactionComponent } from '../../../dialogs/update-transaction/
 import { DeleteTransactionComponent } from '../../../dialogs/delete-transaction/delete-transaction.component';
 import { HomeComponent } from '../home/home.component';
 
+/** Angular-Firebase */
+import { AngularFireModule } from '@angular/fire'
+import { AngularFireAuthModule } from '@angular/fire/auth'
+
+
 /** Angular Material */
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -30,6 +35,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [UserComponent, BudgetListComponent, CreateTransactionComponent, UpdateTransactionComponent, DeleteTransactionComponent, HomeComponent],
@@ -52,7 +58,9 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule
   ],
   providers: [
     MatDatepickerModule,

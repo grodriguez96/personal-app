@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "personal-app-d128b": {
+      "hosting": {
+        "personal": [
+          "personal-app-d128b"
+        ]
+      }
+    }
+  }
+}
