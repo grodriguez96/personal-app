@@ -8,6 +8,10 @@ import { UserRoutingModule } from './user-routing.module';
 /** Components */
 import { UserComponent } from './user.component';
 import { BudgetListComponent } from './../../user/budget-list/budget-list.component'
+import { CreateTransactionComponent } from '../../../dialogs/create-transaction/create-transaction.component';
+import { UpdateTransactionComponent } from '../../../dialogs/update-transaction/update-transaction.component';
+import { DeleteTransactionComponent } from '../../../dialogs/delete-transaction/delete-transaction.component';
+import { HomeComponent } from '../home/home.component';
 
 /** Angular Material */
 import { MatIconModule } from '@angular/material/icon';
@@ -25,10 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { CreateTransactionComponent } from '../../../dialogs/create-transaction/create-transaction.component';
-import { UpdateTransactionComponent } from '../../../dialogs/update-transaction/update-transaction.component';
-import { DeleteTransactionComponent } from '../../../dialogs/delete-transaction/delete-transaction.component';
-import { HomeComponent } from '../home/home.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [UserComponent, BudgetListComponent, CreateTransactionComponent, UpdateTransactionComponent, DeleteTransactionComponent, HomeComponent],
@@ -50,7 +51,8 @@ import { HomeComponent } from '../home/home.component';
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatRadioModule
   ],
   providers: [
     MatDatepickerModule,

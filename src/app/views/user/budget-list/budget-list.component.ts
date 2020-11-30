@@ -8,6 +8,7 @@ import { CreateTransactionComponent } from 'src/app/dialogs/create-transaction/c
 import { UpdateTransactionComponent } from 'src/app/dialogs/update-transaction/update-transaction.component';
 import { DeleteTransactionComponent } from 'src/app/dialogs/delete-transaction/delete-transaction.component';
 import { LocalDataService } from 'src/app/services/localData/local-data.service';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-budget-list',
@@ -16,7 +17,8 @@ import { LocalDataService } from 'src/app/services/localData/local-data.service'
 })
 export class BudgetListComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['concept', 'date', 'amount', 'type', 'buttons'];
+  displayedColumns: string[] = ['select', 'concept', 'date', 'amount', 'type'];
+  selection: Transaction;
   dataSource: MatTableDataSource<Transaction>;
   isDataEmpty = true;
 
@@ -63,9 +65,9 @@ export class BudgetListComponent implements AfterViewInit {
     });
   }
 
-  updateTransaction(row: Transaction): void {
+  updateTransaction(): void {
     const dialogRef = this.dialog.open(UpdateTransactionComponent, {
-      data: row,
+      data: this.selection,
     });
 
     dialogRef.afterClosed().subscribe((result: Transaction) => {
@@ -77,9 +79,9 @@ export class BudgetListComponent implements AfterViewInit {
     });
   }
 
-  deleteTransaction(row: Transaction) {
+  deleteTransaction() {
     const dialogRef = this.dialog.open(DeleteTransactionComponent, {
-      data: row,
+      data: this.selection,
     });
 
     dialogRef.afterClosed().subscribe((result: Transaction) => {
@@ -95,6 +97,11 @@ export class BudgetListComponent implements AfterViewInit {
 
   isEmpty() {
     return (this.dataSource.data.length > 0) ? false : true;
+  }
+
+  rowSelect(row: Transaction) {
+    this.selection = null;
+    this.selection = row;
   }
 
 }
