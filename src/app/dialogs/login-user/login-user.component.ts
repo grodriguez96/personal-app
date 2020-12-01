@@ -26,8 +26,10 @@ export class LoginUserComponent {
 
   async login() {
     const { email, password } = this.form.value;
+
     const result = await this.authSvc.login(email, password);
 
+    /** If 'result' that means user was registered. If email is verified go to user page else verification page. */
     result.user.emailVerified ? this.route.navigate(['user']) : this.route.navigate(['verification'])
   }
 

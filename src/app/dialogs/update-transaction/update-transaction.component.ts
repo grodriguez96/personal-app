@@ -30,16 +30,17 @@ export class UpdateTransactionComponent {
     this.maxDate = new Date(currentYear, currentMonth, currentDate);
   }
 
-  updateTransaction() {
+  /** Create a new transaction, assign form values and return it. */
+  updateTransaction(): Transaction {
+    const { concept, amount, date, type } = this.form.value;
+    const { id, creationDate } = this.transaction;
     const data: Transaction = {
-      id: this.transaction.id,
-      concept: this.form.value['concept'],
-      transactionDate: this.datePipe.transform(this.form.value['date'], 'yyyy-MM-dd'),
-      amount: this.form.value['amount'],
-      type: this.form.value['type'],
-      creationDate: this.transaction.creationDate
-
-
+      id: id,
+      concept: concept,
+      transactionDate: this.datePipe.transform(date, 'yyyy-MM-dd'),
+      amount: amount,
+      type: type,
+      creationDate: creationDate
     }
     return data;
   }

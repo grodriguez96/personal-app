@@ -33,13 +33,15 @@ export class CreateTransactionComponent {
 
   }
 
+  /** Create a new transaction, assign form values and return it. */
   createTransaction() {
+    const { concept, date, amount, type } = this.form.value
     const data: Transaction = {
       id: Math.random(),
-      concept: this.form.value['concept'],
-      transactionDate: this.datePipe.transform(this.form.value['date'], 'yyyy/MM/dd'),
-      amount: this.form.value['amount'],
-      type: Number.parseFloat(this.form.value['type']),
+      concept: concept,
+      transactionDate: this.datePipe.transform(date, 'yyyy/MM/dd'),
+      amount: amount,
+      type: Number.parseFloat(type),
       creationDate: this.datePipe.transform(new Date().toISOString(), "yyyy/MM/dd hh:mm:ss")
     }
     return data;

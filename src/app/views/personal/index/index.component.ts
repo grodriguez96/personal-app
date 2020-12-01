@@ -12,10 +12,12 @@ export class IndexComponent {
 
   constructor(private dialog: MatDialog) { }
 
+  /** Open dialog to register user. */
   register() {
     const dialogRef = this.dialog.open(RegisterUserComponent);
   }
 
+  /** Open dialog to login user. */
   login() {
     const dialogRef = this.dialog.open(LoginUserComponent);
   }

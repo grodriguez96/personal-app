@@ -16,36 +16,38 @@ export class HomeComponent {
   displayedColumns: string[] = ['concept', 'date', 'amount', 'type'];
   dataSource: MatTableDataSource<Transaction>;
   isDataEmpty = true;
-  user = this.authSvc.afAuth.user;
   email: string;
 
   constructor(private localData: LocalDataService, private authSvc: AuthService) {
     this.balance = this.currentBalance(this.localData.data);
     this.dataSource = new MatTableDataSource(this.lastTransactions());
     this.isDataEmpty = this.isEmpty();
-    this.user.subscribe((user) => this.email = user.email)
+
+    /** I get the user email from Firebase and save it.*/
+    this.authSvc.afAuth.onAuthStateChanged(user => this.email = user.email)
   }
 
+  /**Return the sum of all transactions user, filtered by type. */
   currentBalance(transactions: Transaction[]): number {
     let balance = 0;
-    if (transactions != undefined) {
+    if (transactions != undefined)
       transactions.forEach(transaction => {
         transaction.type === Type.DEPOSIT ? balance += transaction.amount : balance -= transaction.amount;
       });
-    }
+
     return balance;
   }
 
+  /** Returns the last 10 transactions created by the user. */
   lastTransactions(): Transaction[] {
-    let data = []
-    if (this.localData.data != undefined) {
-      data = this.localData.data.sort((a, b) => new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime()).reverse().slice(0, 10);
-    }
-    return data;
+    return (this.localData.data != undefined)
+      ? this.localData.data.sort((a, b) => new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime()).reverse().slice(0, 10)
+      : undefined;
+
   }
 
+  /** Check if dataSource is empty. */
   isEmpty(): boolean {
-
     return (this.dataSource.data.length > 0) ? false : true
   }
 }

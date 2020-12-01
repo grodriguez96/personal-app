@@ -1,12 +1,14 @@
+/**Angular */
+import { UserRoutingModule } from './user-routing.module';
+import { environment } from 'src/environments/environment';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DatePipe } from '@angular/common';
-import { UserRoutingModule } from './user-routing.module';
 
+/** Angular-Firebase */
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { environment } from 'src/environments/environment';
 
 /** Components */
 import { UserComponent } from './user.component';
@@ -15,8 +17,6 @@ import { CreateTransactionComponent } from '../../../dialogs/create-transaction/
 import { UpdateTransactionComponent } from '../../../dialogs/update-transaction/update-transaction.component';
 import { DeleteTransactionComponent } from '../../../dialogs/delete-transaction/delete-transaction.component';
 import { HomeComponent } from '../home/home.component';
-
-
 
 /** Angular Material */
 import { MatIconModule } from '@angular/material/icon';
@@ -45,7 +45,7 @@ import { MatRadioModule } from '@angular/material/radio';
     ReactiveFormsModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    MatIconModule,
+    MatIconModule, //below this Angular Material
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,

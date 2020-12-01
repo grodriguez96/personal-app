@@ -25,6 +25,7 @@ export class UserComponent {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
+  /** Logout user session and go to index page. */
   async logOut() {
     await this.authSvc.logOut()
     this.route.navigate(['/']);

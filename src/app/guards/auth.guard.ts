@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean | Observable<boolean> | Promise<boolean> {
     return new Promise((resolve, reject) => {
+      /** Detect if user state change. */
       this.authSvc.afAuth.onAuthStateChanged((user) => {
         if (user) {
           resolve(true);

@@ -26,10 +26,18 @@ export class RegisterUserComponent {
   get email() { return this.form.get('email'); }
   get password() { return this.form.get('password'); }
 
+
   async register() {
+    /** Get email and password from form. */
     const { email, password } = this.form.value;
+
+    /** Pass const and await for response from firebase. */
     const result = await this.authSvc.register(email, password);
+
+    /** If 'result' that means was registered successfully. */
     if (result) {
+
+      /**Send verification email and go to verification page. */
       await this.authSvc.sendEmail();
       this.route.navigate(['verification'])
     }

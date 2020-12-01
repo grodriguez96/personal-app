@@ -11,18 +11,19 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class VerificationComponent {
 
-  user = this.authSvc.afAuth.user;
   email: string;
 
 
   constructor(private routes: Router, private authSvc: AuthService) {
-    this.user.subscribe((user) => this.email = user.email)
+    this.authSvc.afAuth.onAuthStateChanged(user => this.email = user.email)
   }
 
+  /** Go to index page. */
   back() {
     this.routes.navigate(['/'])
   }
 
+  /** Resend email verification. */
   sendEmail() {
     this.authSvc.sendEmail();
   }

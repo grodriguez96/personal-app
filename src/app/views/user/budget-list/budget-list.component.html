@@ -8,7 +8,7 @@
 
     <mat-form-field class="filter">
       <mat-label>Filtro</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ej. Cine, 4.55, ingreso" #input>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ej. Cine" #input>
       <mat-hint>Ingrese una letra, palabra o número para buscar relaciones</mat-hint>
     </mat-form-field>
 
@@ -65,6 +65,8 @@
 
 
       </table>
+
+      <!-- Shown when there is no data. -->
       <div *ngIf="isDataEmpty">
         <h3 class="text-center">No hay datos en su registro. <br> Empiece a crear alguno nuevo !.</h3>
       </div>

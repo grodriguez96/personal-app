@@ -30,7 +30,7 @@ export class AuthService {
 
     } catch (err) {
       if (err.code === "auth/user-not-found") alert("No se encontro ningun usuario con ese correo")
-      if (err.code === "auth/wrong-password") alert("La contraseña es incorrecta")
+      else if (err.code === "auth/wrong-password") alert("La contraseña es incorrecta")
       else alert(err.message)
       console.log(err)
     }

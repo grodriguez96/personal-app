@@ -8,7 +8,6 @@ import { CreateTransactionComponent } from 'src/app/dialogs/create-transaction/c
 import { UpdateTransactionComponent } from 'src/app/dialogs/update-transaction/update-transaction.component';
 import { DeleteTransactionComponent } from 'src/app/dialogs/delete-transaction/delete-transaction.component';
 import { LocalDataService } from 'src/app/services/localData/local-data.service';
-import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-budget-list',
@@ -46,33 +45,42 @@ export class BudgetListComponent implements AfterViewInit {
     }
   }
 
-  updateDatas(): void {
-    this.localData.data = this.dataSource.data;
-    this.dataSource._updateChangeSubscription();
-  }
 
   createTransaction(): void {
+    /** Open dialog to create new transaction. */
     const dialogRef = this.dialog.open(CreateTransactionComponent);
 
+    /**Wait for dialog response, that could be a Json of the transaction or undefined. */
     dialogRef.afterClosed().subscribe((result: Transaction) => {
 
+      /** If response is a Json. */
       if (result != undefined) {
+
+        /**The new transaction is inserted into the dataSource. */
         this.dataSource.data.push(result);
-        this.isDataEmpty = this.isEmpty();
+
+        /**Finally updates dataSorce and localData. */
         this.updateDatas();
 
       }
     });
   }
 
+
   updateTransaction(): void {
+    /** The steps are similar to 'createTransaction'. */
+    /** Pass the value of selected row. */
     const dialogRef = this.dialog.open(UpdateTransactionComponent, {
       data: this.selection,
     });
 
     dialogRef.afterClosed().subscribe((result: Transaction) => {
       if (result != undefined) {
-        const index = this.dataSource.data.findIndex(obj => obj.id == result.id)
+
+        /** Search into dataSource the index of array where id transaction is equal. */
+        const index = this.dataSource.data.findIndex(transaction => transaction.id == result.id)
+
+        /** Change the value into that index for update value. */
         this.dataSource.data[index] = result;
         this.updateDatas();
       }
@@ -80,6 +88,7 @@ export class BudgetListComponent implements AfterViewInit {
   }
 
   deleteTransaction() {
+    /** The steps are similar to 'createTransaction' and 'updateTransaction'. */
     const dialogRef = this.dialog.open(DeleteTransactionComponent, {
       data: this.selection,
     });
@@ -87,6 +96,7 @@ export class BudgetListComponent implements AfterViewInit {
     dialogRef.afterClosed().subscribe((result: Transaction) => {
       if (result != undefined) {
         const index = this.dataSource.data.findIndex(obj => obj.id == result.id);
+        /** Delete the value into that index. */
         this.dataSource.data.splice(index, 1);
         this.isDataEmpty = this.isEmpty();
         this.updateDatas();
@@ -95,12 +105,20 @@ export class BudgetListComponent implements AfterViewInit {
     });
   }
 
+  /** Check if dataSource is empty. */
   isEmpty() {
     return (this.dataSource.data.length > 0) ? false : true;
   }
 
-  rowSelect(row: Transaction) {
+  /** Update localData whith dataSource, then reprint table. */
+  updateDatas(): void {
     this.selection = null;
+    this.localData.data = this.dataSource.data;
+    this.dataSource._updateChangeSubscription();
+  }
+
+  /** Save value of selected row */
+  rowSelect(row: Transaction) {
     this.selection = row;
   }
 

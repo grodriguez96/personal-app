@@ -4,6 +4,8 @@
 
   <div class="balance">
     <h3 class="display-2 text-center">Su balance actual es de: <br>
+
+      <!-- Changes color depending on current balance.-->
       <span [ngClass]="{'negative': balance <0,'positive': balance >= 0}">{{balance}} $</span>
     </h3>
   </div>
@@ -33,7 +35,7 @@
           <td mat-cell *matCellDef="let row"> {{row.amount}} $ </td>
         </ng-container>
 
-        <!-- Type Column if -->
+        <!-- Type Column -->
         <ng-container matColumnDef="type">
           <th mat-header-cell *matHeaderCellDef> TIPO </th>
           <td mat-cell *matCellDef="let row">
@@ -50,6 +52,8 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
       </table>
+
+      <!-- Shown when there is no data.-->
       <div *ngIf="isDataEmpty">
         <h3 class="text-center">No hay datos de sus ultimos 10 movimientos.</h3>
       </div>
