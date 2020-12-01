@@ -1,1 +1,18 @@
-<p>verification works!</p>
+<div class="verification-container  min-vh-100 w-100 pb-20">
+
+  <div class="verif text-center">
+    <h2 class="pt-50">Ya has iniciado el proceso de registro:</h2>
+    <img src="../../../../assets/img/email.png" alt="">
+    <ul>
+      <li>Ahora vamos a necesitar que valides tu correo apretando el enlace adjunto que enviamos a <b>{{email}}</b>.
+      </li>
+      <li>Si no has recibido un correo en la bandeja de entrada, recuerda mirar en el buzon de spam. </li>
+      <li>Puedes volver a solicitar el reenvio del correo apretando el boton de abajo.</li>
+    </ul>
+    <button mat-raised-button color="primary" class="mt-30" (click)="sendEmail()">Reenviar</button>
+    <button mat-raised-button class="mt-30 ml-20" (click)="back()">Volver al inicio</button>
+
+  </div>
+
+
+</div>

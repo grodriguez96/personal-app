@@ -12,7 +12,13 @@
           <td>
             <mat-form-field>
               <mat-label>Correo</mat-label>
-              <input matInput formControlName="email" type="email">
+              <input matInput formControlName="email">
+              <mat-error *ngIf="email.invalid && email.errors.required">
+                El correo es <strong>requerido</strong>
+              </mat-error>
+              <mat-error *ngIf="email.invalid && email.errors.pattern">
+                El correo debe ser <strong>valido</strong>
+              </mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -23,12 +29,23 @@
             <mat-form-field>
               <mat-label>Contraseña</mat-label>
               <input matInput formControlName="password" type="password">
+              <mat-error *ngIf="password.invalid && password.errors.required">
+                La contraseña es <strong>requerida</strong>
+              </mat-error>
+              <mat-error *ngIf="password.invalid && password.errors.minlength">
+                La contraseña debe ser <strong>mayor de 8</strong>
+              </mat-error>
+              <mat-error *ngIf="(password.dirty || password.touched) && password.invalid  && password.errors.pattern">
+                La contraseña debe tener al menos <strong>1 mayuscula, 1 minuscula y 1 numero</strong>
+              </mat-error>
+
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
-            <button mat-raised-button color="primary" mat-dialog-close (click)="login()">Ingresar</button>
+            <button mat-raised-button color="primary" class="mt-30" [disabled]="!form.valid" mat-dialog-close
+              (click)="login()">Ingresar</button>
 
           </td>
         </tr>

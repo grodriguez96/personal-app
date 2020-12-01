@@ -14,14 +14,14 @@ import { AppComponent } from './app.component';
 import { IndexComponent } from './views/personal/index/index.component';
 import { RegisterUserComponent } from './dialogs/register-user/register-user.component';
 import { LoginUserComponent } from './dialogs/login-user/login-user.component';
+import { VerificationComponent } from './views/personal/verification/verification.component';
+
 
 /** Angular Material */
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { VerificationComponent } from './views/personal/verification/verification.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
-import { from } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 

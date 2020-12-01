@@ -1,15 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import firebase from "firebase/app"
+type User = firebase.User
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-verification',
   templateUrl: './verification.component.html',
-  styleUrls: ['./verification.component.css']
+  styleUrls: ['./verification.component.css'],
+  providers: [AuthService]
+
 })
-export class VerificationComponent implements OnInit {
+export class VerificationComponent {
 
-  constructor() { }
+  user = this.authSvc.afAuth.user;
+  email: string;
 
-  ngOnInit(): void {
+
+  constructor(private routes: Router, private authSvc: AuthService) {
+    this.user.subscribe((user) => this.email = user.email)
+  }
+
+  back() {
+    this.routes.navigate(['/'])
+  }
+
+  sendEmail() {
+    this.authSvc.sendEmail();
   }
 
 }
