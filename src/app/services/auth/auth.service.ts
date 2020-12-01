@@ -36,6 +36,14 @@ export class AuthService {
     }
   }
 
+  async logOut() {
+    try {
+      await this.afAuth.signOut()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   async sendEmail() {
     try {
       (await this.afAuth.currentUser).sendEmailVerification();
