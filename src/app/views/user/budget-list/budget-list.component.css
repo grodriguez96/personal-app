@@ -60,4 +60,11 @@ th {
     max-width: 5px !important;
   }
 
+  @media screen and (min-width:481px) and (max-width:768px) {
+    .filter {
+      max-width: 90%;
+      justify-self: center;
+    }
+  }
+
 }

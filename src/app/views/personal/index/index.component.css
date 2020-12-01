@@ -23,14 +23,10 @@ h1 {
   font-family: 'Ranchers', cursive;
 }
 
-.img {
-  width: 25%;
+img {
+  width: 30%;
   display: block;
   margin: auto;
-}
-
-img {
-  width: 100%;
 }
 
 .auth {
@@ -42,7 +38,7 @@ img {
   color: red;
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:768px) {
 
   .index-container {
     grid-template-columns: 1fr;
@@ -60,13 +56,37 @@ img {
     font-size: larger;
   }
 
-  .img {
+  img {
     width: 50%;
   }
 
   .auth {
     font-size: large;
-    width: 95%;
+    width: 90%;
     margin: auto !important;
   }
+
+}
+
+@media screen and (min-width:769px) and (max-width:1024px) {
+  .display-1 {
+    font-size: 4rem !important;
+    font-weight: 150 !important;
+    line-height: 0.6 !important;
+  }
+
+  h1.pt-50 {
+    padding-top: 200px !important;
+  }
+
+  img {
+    width: 70%;
+  }
+
+  .auth {
+    font-size: x-large;
+    width: 90%;
+    margin: auto !important;
+  }
+
 }
