@@ -1,0 +1,15 @@
+.notFound-container {
+  background-color: #fafafa;
+}
+
+img {
+  width: 20%;
+  display: block;
+  margin: auto;
+}
+
+@media screen and (max-width : 768px) {
+  img {
+    width: 40%;
+  }
+}

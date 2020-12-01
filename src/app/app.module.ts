@@ -23,6 +23,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
+import { NotFoundComponent } from './views/personal/not-found/not-found.component';
 
 
 
@@ -33,7 +34,8 @@ import { environment } from 'src/environments/environment';
     IndexComponent,
     RegisterUserComponent,
     LoginUserComponent,
-    VerificationComponent
+    VerificationComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
