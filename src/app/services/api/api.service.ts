@@ -28,4 +28,9 @@ export class ApiService {
   putTransaction(data, id: number) {
     return this.http.put<Transaction[]>(`${this.url}/transaction/${id}`, data)
   }
+
+  /**Delete transaction */
+  deleteTransaction(id: number) {
+    return this.http.delete(`${this.url}/transaction/${id}`)
+  }
 }

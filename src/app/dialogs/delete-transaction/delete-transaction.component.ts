@@ -13,7 +13,7 @@ export class DeleteTransactionComponent {
   }
 
   deleteTransaction() {
-    return this.transaction;
+    return this.transaction.id;
   }
 
 }

@@ -102,14 +102,18 @@ export class BudgetListComponent implements AfterViewInit {
       data: this.selection,
     });
 
-    dialogRef.afterClosed().subscribe((result: Transaction) => {
-      if (result != undefined) {
-        const index = this.dataSource.data.findIndex(obj => obj.id == result.id);
-        /** Delete the value into that index. */
-        this.dataSource.data.splice(index, 1);
-        this.isDataEmpty = this.isEmpty();
-        this.updateDatas();
+    dialogRef.afterClosed().subscribe((result: number) => {
 
+      if (result != undefined) {
+
+        this.api.deleteTransaction(result).subscribe(result => {
+          console.log(result);
+          const index = this.dataSource.data.findIndex(obj => obj.id == result['id']);
+          /** Delete the value into that index. */
+          this.dataSource.data.splice(index, 1);
+          this.isDataEmpty = this.isEmpty();
+          this.updateDatas();
+        })
       }
     });
   }
