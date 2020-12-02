@@ -19,8 +19,13 @@ export class ApiService {
     return this.http.get<Transaction[]>(`${this.url}/transaction/${id}`)
   }
 
-  /** Create one or multiples transaction */
+  /** Create transaction */
   postTransaction(data) {
     return this.http.post<Transaction[]>(`${this.url}/transaction`, data)
+  }
+
+  /** Update transaction */
+  putTransaction(data, id: number) {
+    return this.http.put<Transaction[]>(`${this.url}/transaction/${id}`, data)
   }
 }

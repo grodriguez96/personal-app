@@ -77,15 +77,21 @@ export class BudgetListComponent implements AfterViewInit {
       data: this.selection,
     });
 
-    dialogRef.afterClosed().subscribe((result: Transaction) => {
+    dialogRef.afterClosed().subscribe(result => {
+
       if (result != undefined) {
 
-        /** Search into dataSource the index of array where id transaction is equal. */
-        const index = this.dataSource.data.findIndex(transaction => transaction.id == result.id)
 
-        /** Change the value into that index for update value. */
-        this.dataSource.data[index] = result;
-        this.updateDatas();
+        this.api.putTransaction(result.body, result.id).subscribe(result => {
+          console.log(result)
+          /** Search into dataSource the index of array where id transaction is equal. */
+          const index = this.dataSource.data.findIndex(transaction => transaction.id == result['transaction'][0].id)
+
+          /** Change the value into that index for update value. */
+          this.dataSource.data[index] = this.change(result['transaction'][0]);
+          this.updateDatas();
+
+        })
       }
     });
   }
