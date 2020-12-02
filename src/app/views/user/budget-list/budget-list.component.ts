@@ -107,11 +107,10 @@ export class BudgetListComponent implements AfterViewInit {
       if (result != undefined) {
 
         this.api.deleteTransaction(result).subscribe(result => {
-          console.log(result);
+
           const index = this.dataSource.data.findIndex(obj => obj.id == result['id']);
           /** Delete the value into that index. */
           this.dataSource.data.splice(index, 1);
-          this.isDataEmpty = this.isEmpty();
           this.updateDatas();
         })
       }
@@ -126,6 +125,7 @@ export class BudgetListComponent implements AfterViewInit {
   /** Update localData whith dataSource, then reprint table. */
   updateDatas(): void {
     this.selection = null;
+    this.isDataEmpty = this.isEmpty();
     this.dataSource._updateChangeSubscription();
     this.localData.data = this.dataSource.data;
 
