@@ -8,6 +8,8 @@ import { CreateTransactionComponent } from 'src/app/dialogs/create-transaction/c
 import { UpdateTransactionComponent } from 'src/app/dialogs/update-transaction/update-transaction.component';
 import { DeleteTransactionComponent } from 'src/app/dialogs/delete-transaction/delete-transaction.component';
 import { LocalDataService } from 'src/app/services/localData/local-data.service';
+import { ApiService } from 'src/app/services/api/api.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-budget-list',
@@ -24,7 +26,7 @@ export class BudgetListComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private dialog: MatDialog, private localData: LocalDataService) {
+  constructor(private dialog: MatDialog, private localData: LocalDataService, private api: ApiService, private datePipe: DatePipe) {
     this.dataSource = new MatTableDataSource(this.localData.data);
     this.isDataEmpty = this.isEmpty();
 
@@ -49,23 +51,24 @@ export class BudgetListComponent implements AfterViewInit {
   createTransaction(): void {
     /** Open dialog to create new transaction. */
     const dialogRef = this.dialog.open(CreateTransactionComponent);
-
     /**Wait for dialog response, that could be a Json of the transaction or undefined. */
     dialogRef.afterClosed().subscribe((result: Transaction) => {
 
       /** If response is a Json. */
       if (result != undefined) {
 
-        /**The new transaction is inserted into the dataSource. */
-        this.dataSource.data.push(result);
+        this.api.postTransaction({ ...result, id_user: this.localData.email }).subscribe(result => {
 
-        /**Finally updates dataSorce and localData. */
-        this.updateDatas();
+          /**The new transaction is inserted into the dataSource. */
+          this.dataSource.data.push(this.change(result['transaction'][0]));
+
+          /**Finally updates dataSorce and localData. */
+          this.updateDatas();
+        })
 
       }
     });
   }
-
 
   updateTransaction(): void {
     /** The steps are similar to 'createTransaction'. */
@@ -113,13 +116,23 @@ export class BudgetListComponent implements AfterViewInit {
   /** Update localData whith dataSource, then reprint table. */
   updateDatas(): void {
     this.selection = null;
-    this.localData.data = this.dataSource.data;
     this.dataSource._updateChangeSubscription();
+    this.localData.data = this.dataSource.data;
+
   }
 
   /** Save value of selected row */
   rowSelect(row: Transaction) {
     this.selection = row;
+  }
+
+  change = (trans: Transaction) => {
+    const { concept, amount, created_date, transaction_date, id, type } = trans
+    const newTrans = {
+      concept, amount, created_date, id, type,
+      transaction_date: this.datePipe.transform(transaction_date, 'yyyy-MM-dd')
+    }
+    return newTrans;
   }
 
 }

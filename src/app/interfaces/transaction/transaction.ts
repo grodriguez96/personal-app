@@ -5,7 +5,7 @@ export interface Transaction {
     id: number,
     concept: string,
     amount: number;
-    transactionDate: string,
+    transaction_date: string,
     type: Type
-    creationDate: string,
+    created_date: string,
 }

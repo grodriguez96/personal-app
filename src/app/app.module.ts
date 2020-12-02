@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+
+
 
 /**Angular-Firebase */
 import { AngularFireAuthModule } from '@angular/fire/auth'
@@ -39,6 +43,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularFireAuthModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     MatButtonModule,
     MatFormFieldModule,
@@ -46,7 +51,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule
 
   ],
-  providers: [],
+  providers: [DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

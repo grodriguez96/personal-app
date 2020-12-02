@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DatePipe } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+
 
 /** Angular-Firebase */
 import { AngularFireModule } from '@angular/fire';
@@ -43,6 +45,7 @@ import { MatRadioModule } from '@angular/material/radio';
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     MatIconModule, //below this Angular Material
