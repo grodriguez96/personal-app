@@ -11,6 +11,20 @@ export class LocalDataService {
 
   private _data: Transaction[];
 
+  private _emailGuest = 'invitado@gmail.com';
+
+  public get emailGuest() {
+    return this._emailGuest;
+  }
+
+  private _passwordGuest = 'invitado1234';
+
+  public get passwordGuest() {
+    return this._passwordGuest;
+  }
+
+
+
   private _email: string;
 
   public get email(): string {
