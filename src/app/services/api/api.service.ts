@@ -11,8 +11,10 @@ export class ApiService {
   }
 
   local = 'http://localhost:4000'
+  online = 'https://personal-app-api-8.herokuapp.com'
 
-  url = this.local;
+  /**Change if you want local server or online server  */
+  url = this.online;
 
   /** Get all user transactions data   */
   getTransactions(id: string) {
